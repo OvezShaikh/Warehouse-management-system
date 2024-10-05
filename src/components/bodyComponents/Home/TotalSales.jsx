@@ -60,7 +60,7 @@ export default function TotalSales() {
       },
     },
     xaxis: {
-      categories: ["Mon", "Thu", "Wed", "The", "Fri", "Sat", "Sun"],
+      categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     },
   };
   const series = [
