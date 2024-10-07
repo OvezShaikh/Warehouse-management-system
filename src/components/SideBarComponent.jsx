@@ -6,11 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
   ListItemButton,
-  IconButton,
   Box,
-  Snackbar,
-  Alert,
-  Button,
 } from "@mui/material";
 import {
   HomeOutlined,
@@ -22,121 +18,61 @@ import {
   TrendingUpOutlined,
   PeopleAltOutlined,
 } from "@mui/icons-material";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function SideBarComponent() {
+const SideBarComponent = () => {
   const navigate = useNavigate();
-  const navigateTo = (to) => {
-    navigate(to);
-  };
   const location = useLocation();
   const currentPage = location.pathname;
-  console.log(currentPage);
-  // const styles = theme => ({
-  //     listItemText:{
-  //         fontSize:'0.7em',//Insert your required size
-  //     }
-  //     });
+
   const sideBarComponent = [
-    {
-      title: "Home",
-      component: <HomeOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Inventory",
-      component: <Inventory2Outlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Orders",
-      component: <CardTravelOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Customers",
-      component: <PeopleAltOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Revenue",
-      component: <MonetizationOnOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Growth",
-      component: <TrendingUpOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Reports",
-      component: <DescriptionOutlined fontSize="medium" color="primary" />,
-    },
-    {
-      title: "Settings",
-      component: <SettingsOutlined fontSize="medium" color="primary" />,
-    },
+    { title: "Home", component: <HomeOutlined fontSize="medium" color="primary" /> },
+    { title: "Inventory", component: <Inventory2Outlined fontSize="medium" color="primary" /> },
+    { title: "Orders", component: <CardTravelOutlined fontSize="medium" color="primary" /> },
+    { title: "Customers", component: <PeopleAltOutlined fontSize="medium" color="primary" /> },
+    { title: "Revenue", component: <MonetizationOnOutlined fontSize="medium" color="primary" /> },
+    { title: "Growth", component: <TrendingUpOutlined fontSize="medium" color="primary" /> },
+    { title: "Reports", component: <DescriptionOutlined fontSize="medium" color="primary" /> },
+    { title: "Settings", component: <SettingsOutlined fontSize="medium" color="primary" /> },
   ];
-  const [selected, setSelected] = useState(0);
-  const handlSelectedComponent = (event, index) => {
-    setSelected(index);
+
+  const [selected, setSelected] = useState(currentPage);
+
+  const handleNavigation = (title) => {
+    const path = `/${title.toLowerCase()}`;
+    if (currentPage !== path) {
+      setSelected(path);
+      navigate(path);
+    }
   };
+
   return (
-    <>
-      <List>
-        {sideBarComponent.map((comp, index) => (
-          <ListItem disablePadding dense={true} key={index}>
-            <Box width="100%">
-              <ListItemButton
-                onClick={(event) => {
-                  handlSelectedComponent(event, index);
-                  navigateTo(comp.title.toLocaleLowerCase());
+    <List>
+      {sideBarComponent.map((comp, index) => (
+        <ListItem disablePadding dense key={index}>
+          <Box width="100%">
+            <ListItemButton
+              onClick={() => handleNavigation(comp.title)}
+              selected={currentPage === `/${comp.title.toLowerCase()}`}
+              sx={{ mb: 3, borderLeft: 0, borderColor: "primary.main", ml: 1 }}
+            >
+              <ListItemIcon>
+                <Box>{comp.component}</Box>
+              </ListItemIcon>
+              <ListItemText
+                primary={comp.title}
+                primaryTypographyProps={{
+                  fontSize: "medium",
+                  fontWeight: currentPage === `/${comp.title.toLowerCase()}` ? "bold" : "normal",
+                  color: currentPage === `/${comp.title.toLowerCase()}` ? "primary.main" : "inherit",
                 }}
-                // selected={}
-                selected={
-                  index === selected &&
-                  currentPage === "/" + comp.title.toLowerCase()
-                }
-                sx={{
-                  mb: 3,
-                  borderLeft: 0,
-                  borderColor: "primary.main",
-                  ml: 1,
-                }}
-              >
-                <ListItemIcon>
-                  <IconButton>{comp.component}</IconButton>
-                </ListItemIcon>
-                {/* <Link
-                  to={"" + comp.title.toLocaleLowerCase()}
-                  className="router-link"
-                > */}
-                <ListItemText
-                  primary={comp.title}
-                  primaryTypographyProps={{
-                    fontSize: "medium",
-                    fontWeight: selected === index ? "bold" : "",
-                    color: selected === index ? "primary.main" : "inherit",
-                  }}
-                />
-                {/* </Link> */}
-              </ListItemButton>
-            </Box>
-          </ListItem>
-        ))}
-      </List>
-      {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
-      </Snackbar> */}
-    </>
+              />
+            </ListItemButton>
+          </Box>
+        </ListItem>
+      ))}
+    </List>
   );
-  //   const [open, setOpen] = React.useState(false);
+};
 
-  //   const handleClick = () => {
-  //     setOpen(true);
-  //   };
-
-  //   const handleClose = (event, reason) => {
-  //     if (reason === 'clickaway') {
-  //       return;
-  //     }
-
-  //     setOpen(false);
-  //   };
-}
+export default SideBarComponent;

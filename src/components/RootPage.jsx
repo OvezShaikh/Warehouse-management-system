@@ -1,58 +1,78 @@
 import React from "react";
-import MyModel from "./subComponents/MyModal";
+import { Box, Container, Typography, Grid, Button } from "@mui/material";
+import { Link } from 'react-router-dom';
+import { Fade } from '@mui/material'; // For animations
+import images from "../constants/images";
 
 export default function RootPage() {
   return (
-    <div className="sketchfab-embed-wrapper" style={{height: '500px'}}>
-      <iframe
-      style={{ 
-        position: 'relative', 
-        top: 0, 
-        left: 0, 
-        width: '98%', 
-        height: '100%',
-        paddingTop: '20px',
-      }}
-        title="Warehouse FBX Model Free"
-        frameBorder="0"
-        allowFullScreen
-        mozallowfullscreen="true"
-        webkitallowfullscreen="true"
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        xr-spatial-tracking
-        execution-while-out-of-viewport
-        execution-while-not-rendered
-        web-share
-        src="https://sketchfab.com/models/daa7fd3ff88945298d00045ca40a4c03/embed?autostart=1"
-      ></iframe>
-      {/* <p style={{ fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A' }}>
-        <a
-          href="https://sketchfab.com/3d-models/warehouse-fbx-model-free-daa7fd3ff88945298d00045ca40a4c03?utm_medium=embed&utm_campaign=share-popup&utm_content=daa7fd3ff88945298d00045ca40a4c03"
-          target="_blank"
-          rel="nofollow"
-          style={{ fontWeight: 'bold', color: '#1CAAD9' }}
-        >
-          Warehouse FBX Model Free
-        </a>{" "}
-        by{" "}
-        <a
-          href="https://sketchfab.com/Nicholas01?utm_medium=embed&utm_campaign=share-popup&utm_content=daa7fd3ff88945298d00045ca40a4c03"
-          target="_blank"
-          rel="nofollow"
-          style={{ fontWeight: 'bold', color: '#1CAAD9' }}
-        >
-          Nicholas-3D
-        </a>{" "}
-        on{" "}
-        <a
-          href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=daa7fd3ff88945298d00045ca40a4c03"
-          target="_blank"
-          rel="nofollow"
-          style={{ fontWeight: 'bold', color: '#1CAAD9' }}
-        >
-          Sketchfab
-        </a>
-      </p> */}
-    </div>
+    <Container sx={{ bgcolor: "#f0f4f8", py: 10 }}>
+      {/* Header Section */}
+      <Box sx={{ textAlign: 'center', mb: 5 }}>
+        <Typography variant="h3" component="h1" sx={{ fontWeight: 'bold' }}>
+          Welcome to the Warehouse Management System
+        </Typography>
+        <Typography variant="h6" sx={{ mt: 2, color: "gray" }}>
+          Explore our interactive warehouse model and discover our features!
+        </Typography>
+      </Box>
+
+      {/* Features Section */}
+      <Grid container spacing={4}>
+        {[
+          {
+            title: "Real-Time Inventory Tracking",
+            description: "Monitor stock levels and manage your inventory efficiently. Never run out of stock again!",
+            image: "path/to/inventory-image.png", // Replace with your image path
+          },
+          {
+            title: "Order Management",
+            description: "Streamline your order process from placement to fulfillment. Track orders easily!",
+            image: "path/to/order-image.png",
+          },
+          {
+            title: "Supplier Management",
+            description: "Manage your suppliers effectively and maintain good relationships to ensure timely deliveries.",
+            image: "path/to/supplier-image.png",
+          },
+        ].map((feature, index) => (
+          <Grid item xs={12} md={4} key={index}>
+            <Fade in timeout={500}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  p: 3,
+                  bgcolor: 'white',
+                  borderRadius: 2,
+                  boxShadow: 3,
+                  height: '100%',
+                  transition: 'transform 0.3s',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: 6,
+                  },
+                }}
+              >
+                <Typography variant="h5" sx={{ mb: 2 }}>{feature.title}</Typography>
+                <img src={feature.image} alt={feature.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }} />
+                <Typography>{feature.description}</Typography>
+              </Box>
+            </Fade>
+          </Grid>
+        ))}
+      </Grid>
+
+      {/* Call to Action Section */}
+      <Box sx={{ textAlign: 'center', mt: 5 }}>
+        <Typography variant="h5" sx={{ mb: 2 }}>Get Started Today!</Typography>
+        <Link to="/home" style={{ textDecoration: 'none' }}>
+          <Button variant="contained" color="primary" size="large">
+            Home
+          </Button>
+        </Link>
+      </Box>
+    </Container>
   );
 }
