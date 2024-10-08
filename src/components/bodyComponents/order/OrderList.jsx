@@ -23,13 +23,13 @@ export default class OrderList extends Component {
       {
         field: "id",
         headerName: "ID",
-        width: 90,
+        width: 60,
         description: "id of the product",
       },
       {
         field: "fullname",
         headerName: "Full Name",
-        width: 400,
+        width: 300,
         description: "customer full name",
         renderCell: (params) => {
           return (
@@ -49,14 +49,14 @@ export default class OrderList extends Component {
       {
         field: "mobile",
         headerName: "Mobile",
-        width: 400,
+        width: 300,
         description: "customer phone number ",
         valueGetter: (params) => params.row.customer.mobile,
       },
       {
         field: "total",
         headerName: "Total Amount",
-        width: 300,
+        width: 200,
         description: "total amount of the order",
         valueGetter: (params) => {
           const total = 300;
@@ -66,7 +66,7 @@ export default class OrderList extends Component {
       {
         field: "details",
         headerName: "Order Details",
-        width: 300,
+        width: 200,
         description: "the details of the order",
 
         renderCell: (params) => {

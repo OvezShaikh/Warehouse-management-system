@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ApexCharts from "react-apexcharts";
-import { Box } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 export default function BestSelledProductChartBar() {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+
   const [channelData, setChannelData] = useState([]);
 
   useEffect(() => {
@@ -20,6 +22,9 @@ export default function BestSelledProductChartBar() {
   const options3 = {
     colors: ["#5A4FCF", "#FFA500", "#C53500", "#FFBF00", "#FF3659"],
     chart: {
+      toolbar: {
+        show: true,
+      },
       id: "basic-bar",
       type: "bar",
       stacked: true, //one on top of another
@@ -28,13 +33,14 @@ export default function BestSelledProductChartBar() {
       enabled: false,
     },
     legend: {
-      position: "top",
-      horizontalAlign: "center",
-      offsetY: 0,
+      position: isSmallScreen ? "bottom" : "top",
+      horizontalAlign: "left",
+      offsetY: -3,
     },
-    title: {
-      text: "Top 5 Selled Product Over Year",
-    },
+    // title: {
+    //   text: "Top 5 Selled Product Over Year",
+      
+    // },
     plotOptions: {
       bar: {
         distributed: true,
@@ -56,8 +62,8 @@ export default function BestSelledProductChartBar() {
       fixed: {
         enabled: true,
         position: "topLeft", // topRight, topLeft, bottomRight, bottomLeft
-        offsetY: 30,
-        offsetX: 60,
+        offsetY: 60,
+        offsetX: 90,
       },
     },
   };
@@ -71,6 +77,25 @@ export default function BestSelledProductChartBar() {
         height: "95%",
       }}
     >
+      {/* Wrapper for Title and Toolbar */}
+      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2.5 }}>
+        <Typography variant="h2" fontWeight="semi-bold"  sx={{fontSize: '1rem',marginBottom: 0, // Remove or reduce margin
+            padding: 0, // Remove padding if necessary
+            whiteSpace: 'normal',
+            width: '60%', }}>
+          Top 5 Selled Product Over Year
+        </Typography>
+        
+        {/* Toolbar with margin */}
+        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '15px' }}>
+          {options3.chart.toolbar && options3.chart.toolbar.tools && (
+            <>
+            </>
+          )}
+        </Box>
+      </Box>
+
+      {/* Chart Component */}
       <ApexCharts
         options={options3}
         series={channelData}

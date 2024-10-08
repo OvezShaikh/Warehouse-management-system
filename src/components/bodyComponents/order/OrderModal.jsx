@@ -81,7 +81,7 @@ export default function OrderModal({ order }) {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            width: "30%",
+            width: "35%",
             m: 3,
           }}
         >
@@ -95,7 +95,7 @@ export default function OrderModal({ order }) {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            width: "30%",
+            width: "35%",
             m: 3,
           }}
         >

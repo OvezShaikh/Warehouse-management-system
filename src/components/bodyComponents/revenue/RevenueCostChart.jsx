@@ -88,7 +88,7 @@ export default function RevenueCostChart() {
   return (
     <Box
       sx={{
-        marginX: 4,
+        marginX: 3,
         bgcolor: "white",
         borderRadius: 2,
         padding: 3,

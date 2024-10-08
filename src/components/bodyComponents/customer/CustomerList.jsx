@@ -8,13 +8,13 @@ export default class CustomerList extends Component {
       {
         field: "id",
         headerName: "ID",
-        width: 90,
+        width: 60,
         description: "id of the product",
       },
       {
         field: "fullname",
         headerName: "Full Name",
-        width: 200,
+        width: 300,
         description: "customer full name",
         renderCell: (params) => {
           return (
@@ -43,7 +43,7 @@ export default class CustomerList extends Component {
       {
         field: "total",
         headerName: "Total Amount",
-        width: 300,
+        width: 200,
         description: "total amount of the order",
         valueGetter: (params) => {
           const total = 300;
@@ -53,7 +53,7 @@ export default class CustomerList extends Component {
       {
         field: "orderHistory",
         headerName: "Order Details",
-        width: 300,
+        width: 200,
         description: "the details of the order",
         valueGetter: (params) => {
           const history = "03/01/2027";
@@ -63,7 +63,7 @@ export default class CustomerList extends Component {
       {
         field: "mobile",
         headerName: "Mobile",
-        width: 300,
+        width: 200,
         description: "total amount of the order",
       },
     ];

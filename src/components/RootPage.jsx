@@ -23,17 +23,17 @@ export default function RootPage() {
           {
             title: "Real-Time Inventory Tracking",
             description: "Monitor stock levels and manage your inventory efficiently. Never run out of stock again!",
-            image: "path/to/inventory-image.png", // Replace with your image path
+            image: images.RealTimeInventoryTracking,
           },
           {
             title: "Order Management",
             description: "Streamline your order process from placement to fulfillment. Track orders easily!",
-            image: "path/to/order-image.png",
+            image: images.OrderManagement,
           },
           {
             title: "Supplier Management",
             description: "Manage your suppliers effectively and maintain good relationships to ensure timely deliveries.",
-            image: "path/to/supplier-image.png",
+            image: images.SupplierManagement,
           },
         ].map((feature, index) => (
           <Grid item xs={12} md={4} key={index}>
@@ -48,15 +48,15 @@ export default function RootPage() {
                   borderRadius: 2,
                   boxShadow: 3,
                   height: '100%',
-                  transition: 'transform 0.3s',
+                  transition: 'transform 0.1s',
                   '&:hover': {
-                    transform: 'scale(1.05)',
+                    transform: 'scale(1.15)',
                     boxShadow: 6,
                   },
                 }}
               >
                 <Typography variant="h5" sx={{ mb: 2 }}>{feature.title}</Typography>
-                <img src={feature.image} alt={feature.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }} />
+                <img src={feature.image} alt={feature.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }}/>
                 <Typography>{feature.description}</Typography>
               </Box>
             </Fade>
