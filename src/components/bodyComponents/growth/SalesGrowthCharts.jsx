@@ -17,9 +17,9 @@ export default function SalesGrowthCharts() {
       horizontalAlign: "center",
       offsetY: 0,
     },
-    title: {
-      text: "Sales Growth Over The Year",
-    },
+    // title: {
+    //   text: "Sales Growth Over The Year",
+    // },
     plotOptions: {
       bar: {
         columnWidth: "40%",
@@ -65,7 +65,7 @@ export default function SalesGrowthCharts() {
     <Box
       sx={{
         marginX: 4,
-        bgcolor: "white",
+        // bgcolor: "white",
         borderRadius: 2,
         padding: 3,
         height: "100%",

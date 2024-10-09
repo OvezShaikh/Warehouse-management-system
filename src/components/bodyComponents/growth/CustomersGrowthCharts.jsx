@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ApexCharts from "react-apexcharts";
-import { Box } from "@mui/material";
+import { Box , useMediaQuery} from "@mui/material";
 export default function CustomersGrowthCharts() {
   const [channelData, setChannelData] = useState([]);
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   useEffect(() => {
     setChannelData([
@@ -32,13 +33,13 @@ export default function CustomersGrowthCharts() {
       enabled: false,
     },
     legend: {
-      position: "top",
-      horizontalAlign: "center",
+      position: isSmallScreen ? "bottom" : "top",
+      horizontalAlign: "left",
       offsetY: 0,
     },
-    title: {
-      text: "Customer Growth",
-    },
+    // title: {
+    //   text: "Customer Growth",
+    // },
 
     stroke: {
       curve: "smooth",
@@ -71,7 +72,7 @@ export default function CustomersGrowthCharts() {
     <Box
       sx={{
         margin: 4,
-        bgcolor: "white",
+        // bgcolor: "white",
         borderRadius: 2,
         padding: 3,
         height: "95%",

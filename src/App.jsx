@@ -4,7 +4,7 @@ import RootComponent from "./components/RootComponent";
 import RootPage from "./components/RootPage";
 import DataTable from "./test/DataTable";
 import Hello from "./test/Hello";
-// import "../app.css";
+import "../app.css";
 import {
   Route,
   createBrowserRouter,

@@ -35,12 +35,12 @@ export default function VisitorsGrowthCharts() {
     },
     legend: {
       position: "top",
-      horizontalAlign: "right",
+      horizontalAlign: "left",
       offsetY: 0,
     },
-    title: {
-      text: "Visitors",
-    },
+    // title: {
+    //   text: "Visitors",
+    // },
     plotOptions: {
       bar: {
         columnWidth: "15%",
@@ -67,7 +67,7 @@ export default function VisitorsGrowthCharts() {
     <Box
       sx={{
         marginX: 4,
-        bgcolor: "white",
+        // bgcolor: "white",
         borderRadius: 2,
         padding: 3,
         height: "100%",

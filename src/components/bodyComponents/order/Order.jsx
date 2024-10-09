@@ -10,7 +10,7 @@ const Order = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
-    <Box sx={{ m: 0, p: 3, width: "100%" }}>
+    <Box sx={{ m: 0, p: 1, width: "100%" }}>
       {isSmallScreen && (
         <AppBar position="fixed">
           <Toolbar sx={{ height: '80px' }}>
